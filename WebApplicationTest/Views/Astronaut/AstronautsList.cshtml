@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebApplicationTest.Models.Astronauts>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Astronauts List</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Number of Flights</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Name</td>
+                    <td>@item.Status</td>
+                    <td>@item.NumberOfFlights</td>
+                    <td><a asp-controller="Astronaut" asp-action="AstronautDetails" asp-route-id="@item.ID">Astronaut Details Info</a></td>
+                </tr>
+                }
+        </tbody>
+    </table>
+    <hr/>
+    <a href="/HomePage/Index">Back to Start Page</a>
+</body>
+</html>
