@@ -1,12 +1,17 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = "_Layout";
+    ViewBag.Title = "Start Page";
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Start Page</title>
-</head>
-<body>
-    <h4>List of Astronauts</h4>
-    <a href="/Astronaut/AstronautsList">Astronauts</a>
-</body>
-</html>
+@await Html.PartialAsync("PartialViews/_Slider")
+
+<section id="Main">
+    <div class="container">
+        <h2>List of Astronauts</h2>
+        <h2>
+            <a asp-controller="Astronaut" asp-action="AstronautsList" >Astronaut List</a>
+        </h2>
+    </div>
+</section>
+
+@await Html.PartialAsync("Partial/_Container")
