@@ -1,0 +1,51 @@
+﻿@model WebApplicationTest.Models.Astronauts
+
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Astronaut Details</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Astronaut Card</h2>
+        <div>
+            <p>ID:</p>
+            <h3>@Model.ID</h3>
+        </div>
+        <div>
+            <p>Name:</p>
+            <h3>@Model.Name</h3>
+        </div>
+        <div>
+            <p>Group:</p>
+            <h3>@Model.GroupSet</h3>
+        </div>
+        <div>
+            <p>Post:</p>
+            <h3>@Model.Post</h3>
+        </div>
+        <div>
+            <p>Number Of Flights:</p>
+            <h3>@Model.NumberOfFlights</h3>
+        </div>
+        <div>
+            <p>Status:</p>
+            <h3>@Model.Status</h3>
+        </div>
+        <div>
+            <p>Gender:</p>
+            <h3>@Model.Gender</h3>
+        </div>
+        <hr />
+        <div>
+            <p><a asp-controller="Astronaut" asp-action="AstronautsList">Back to Astronauts Table</a></p>
+        </div>
+    </div>
+</body>
+</html>
