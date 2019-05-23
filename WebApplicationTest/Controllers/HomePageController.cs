@@ -8,8 +8,11 @@ namespace WebApplicationTest.Controllers
 {
     public class HomePageController : Controller
     {
-        public IActionResult Index() => View();
-
+        public IActionResult Index()
+        {
+            return View();
+        }
+        
         public IActionResult Shop() => View();
 
         public IActionResult ProductDetails() => View();

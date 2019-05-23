@@ -3,31 +3,90 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WebApplicationTest.Interfaces;
 using WebApplicationTest.Models;
 
 namespace WebApplicationTest.Controllers
 {
+    //[Route("users")]
     public class AstronautController : Controller
     {
-        public List<Astronauts> _astronautsList = new List<Astronauts>
+        private readonly IAstronautsCollection _astronautsList;
+
+        public AstronautController(IAstronautsCollection AstronautsList)
         {
-            new Astronauts(0, "VOSS Janice Elaine", "NASA-13", new DateTime(1990,1,1),"Mission Specialist", Status.Former, 5, Gender.female),
-            new Astronauts(1, "VOSS James Shelton", "NASA-13", new DateTime(1987,1,1),"Mission Specialist", Status.Former, 5, Gender.male),
-            new Astronauts(2, "VIRTS, Jr.Terry Wayne", "NASA-18", new DateTime(2000,1,1),"Pilot", Status.Former, 2, Gender.male),
-            new Astronauts(3, "VEACH Charles Lacy", "MSE-1", new DateTime(1979,1,1),"Mission Specialist", Status.Former, 2, Gender.male),
-            new Astronauts(4, "van HOFTEN James Dougal Adrianus", "NASA-8", new DateTime(1978,1,1),"Mission Specialist 	", Status.Former, 2, Gender.male),
-            new Astronauts(5, "VANGEN Scott Duane", "ASTRO-2", new DateTime(1993,1,1),"Payload Specialist", Status.Former, 0, Gender.male),
-        };
+            _astronautsList = AstronautsList;
+        }
 
         public IActionResult AstronautsList()
         {
-            return View(_astronautsList);
+            return View(_astronautsList.GetAll());
         }
 
+        //[Route("{ID}")]
         public IActionResult AstronautDetails(int ID)
         {
-            Astronauts A = _astronautsList.FirstOrDefault(e => e.ID == ID);
+            Astronauts A = _astronautsList.GetById(ID);
             return View(A);
+        }
+
+        [Route("edit/{ID?}")]
+        public IActionResult Edit(int? ID)
+        {
+            Astronauts A;
+            if (ID != null)
+            {
+                A = _astronautsList.GetById((int)ID);
+                if (A is null)
+                {
+                    return NotFound(A);
+                }
+            }
+            else
+            {
+                A = new Astronauts();
+            }
+            return View(A);
+        }
+
+        //[HttpPost]
+        //[Route("edit/{ID?}")]
+        public IActionResult Edit(Astronauts Astro)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(Astro);
+            }
+
+            if(Astro.ID > 0)
+            {
+                var Astronaut = _astronautsList.GetById(Astro.ID);
+
+                if (Astronaut is null)
+                {
+                    return NotFound();
+                }
+
+                Astronaut.ChangeData(Astro);
+            }
+            else
+            {
+                _astronautsList.AddNewAstronaut(Astro);
+            }
+            _astronautsList.CommitChanges();
+
+            return RedirectToAction("AstronautsList");
+        }
+
+        //[Route("delete/{ID?}")]
+        public IActionResult Delete(int ID)
+        {
+            Astronauts Astro = _astronautsList.GetById(ID);
+            if (Astro != null)
+            {
+                _astronautsList.DeleteByID(ID);
+            }
+            return RedirectToAction("AstronautsList");
         }
     }
 }

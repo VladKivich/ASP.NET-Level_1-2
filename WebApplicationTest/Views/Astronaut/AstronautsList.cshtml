@@ -2,18 +2,20 @@
 
 @{
     Layout = "_Layout";
+    ViewBag.Title = "Astronauts list";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Astronauts List</title>
-</head>
 <body>
     <section id="Main">
         <div class="container">
+
+            <h2>Astronauts List</h2>
+            <p>
+                Add New Astronaut
+                <a asp-controller="Astronaut" asp-action="Edit" class="btn btn-default">Add New</a>
+            </p>
+
             <table>
                 <thead>
                     <tr>
@@ -31,7 +33,9 @@
                             <td>@item.Name</td>
                             <td>@item.Status</td>
                             <td>@item.NumberOfFlights</td>
-                            <td><a asp-controller="Astronaut" asp-action="AstronautDetails" asp-route-id="@item.ID">Astronaut Details Info</a></td>
+                            <td><a asp-controller="Astronaut" asp-action="AstronautDetails" asp-route-id="@item.ID" class="btn btn-default">Astronaut Details Info</a></td>
+                            <td><a asp-controller="Astronaut" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-default">Edit</a></td>
+                            <td><a asp-controller="Astronaut" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a></td>
                         </tr>
                     }
                 </tbody>
@@ -41,4 +45,3 @@
         </div>
     </section>
 </body>
-</html>

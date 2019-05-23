@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplicationTest.Interfaces;
+using WebApplicationTest.Services;
 
 namespace WebApplicationTest
 {
@@ -26,8 +28,12 @@ namespace WebApplicationTest
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //Добавялем зависимости
+            services.AddSingleton<IAstronautsCollection, AstronautsServices>();
+
             //Добавляем MVC сервисы
             services.AddMvc();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,7 +41,7 @@ namespace WebApplicationTest
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
             }
 
             app.UseStaticFiles();
