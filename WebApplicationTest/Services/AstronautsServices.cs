@@ -24,6 +24,7 @@ namespace WebApplicationTest.Services
         {
             if (!_astronautsList.Contains(NewAstronaut))
             {
+                NewAstronaut.ID = (byte)(_astronautsList.Count + 1);
                 _astronautsList.Add(NewAstronaut);
             }
         }
@@ -49,7 +50,7 @@ namespace WebApplicationTest.Services
         {
             var Result = _astronautsList.FirstOrDefault(astro => astro.ID == ID);
 
-            return Result is null ? new Astronauts((byte)(_astronautsList.Max(astro => astro.ID) + 1)) : Result;
+            return Result is null ? new Astronauts() : Result;
         }
     }
 }

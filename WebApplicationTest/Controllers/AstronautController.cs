@@ -8,7 +8,6 @@ using WebApplicationTest.Models;
 
 namespace WebApplicationTest.Controllers
 {
-    //[Route("users")]
     public class AstronautController : Controller
     {
         private readonly IAstronautsCollection _astronautsList;
@@ -22,15 +21,13 @@ namespace WebApplicationTest.Controllers
         {
             return View(_astronautsList.GetAll());
         }
-
-        //[Route("{ID}")]
+        
         public IActionResult AstronautDetails(int ID)
         {
             Astronauts A = _astronautsList.GetById(ID);
             return View(A);
         }
-
-        [Route("edit/{ID?}")]
+        
         public IActionResult Edit(int? ID)
         {
             Astronauts A;
@@ -49,8 +46,7 @@ namespace WebApplicationTest.Controllers
             return View(A);
         }
 
-        //[HttpPost]
-        //[Route("edit/{ID?}")]
+        [HttpPost]
         public IActionResult Edit(Astronauts Astro)
         {
             if (!ModelState.IsValid)
@@ -77,8 +73,7 @@ namespace WebApplicationTest.Controllers
 
             return RedirectToAction("AstronautsList");
         }
-
-        //[Route("delete/{ID?}")]
+        
         public IActionResult Delete(int ID)
         {
             Astronauts Astro = _astronautsList.GetById(ID);

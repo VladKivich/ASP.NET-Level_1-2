@@ -42,16 +42,16 @@ namespace WebApplicationTest.Models
             this.ID = ID;
             this.Name = Name;
             GroupSet = Group;
-            this.Data = new DateTime(Year,1,1);
+            this.Data = new DateTime(Year, 1, 1);
             this.Post = Post;
             this.Status = Status;
             this.NumberOfFlights = NumberOfFlights;
             this.Gender = Gender;
         }
 
-        public Astronauts(byte ID = 0)
+        public Astronauts()
         {
-            this.ID = ID;
+            this.ID = 0;
             this.Name = "Unknown";
             GroupSet = "Unknown";
             this.Data = DateTime.Now;
@@ -78,6 +78,14 @@ namespace WebApplicationTest.Models
             get
             {
                 return Data.Year;
+            }
+        }
+
+        public Astronauts GetAstro
+        {
+            get
+            {
+                return this;
             }
         }
     }
