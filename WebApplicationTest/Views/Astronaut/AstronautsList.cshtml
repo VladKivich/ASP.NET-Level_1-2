@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebApplicationTest.Models.Astronauts>
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Astronauts list";
+}
+
+
+<body>
+    <section id="Main">
+        <div class="container">
+
+            <h2>Astronauts List</h2>
+            <p>
+                Add New Astronaut
+                <a asp-controller="Astronaut" asp-action="Edit" class="btn btn-default">Add New</a>
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Number of Flights</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.ID</td>
+                            <td>@item.Name</td>
+                            <td>@item.Status</td>
+                            <td>@item.NumberOfFlights</td>
+                            <td><a asp-controller="Astronaut" asp-action="AstronautDetails" asp-route-id="@item.ID" class="btn btn-default">Astronaut Details Info</a></td>
+                            <td><a asp-controller="Astronaut" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-default">Edit</a></td>
+                            <td><a asp-controller="Astronaut" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <hr />
+            <a href="/HomePage/Index">Back to Start Page</a>
+        </div>
+    </section>
+</body>
