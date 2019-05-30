@@ -3,7 +3,7 @@ using WebApplicationTest.Entities.BaseClasses;
 
 namespace WebApplicationTest.Entities.Interfaces
 {
-    interface IProductData
+    public interface IProductData
     {
         IEnumerable<Category> GetCategories();
 

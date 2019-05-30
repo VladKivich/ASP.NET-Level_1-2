@@ -15,7 +15,7 @@ namespace WebApplicationTest.Entities.BaseClasses
         {
             Categories = new List<Category>()
             {
-                new Category("Sports Wear", 1, 0, null ),
+                new Category("Sports Wear", 1, 0, null),
                 new Category("Nike", 2, 0, 1),
                 new Category("Adidas", 3, 1, 1),
                 new Category("Reebok", 4, 2,1),
@@ -39,8 +39,6 @@ namespace WebApplicationTest.Entities.BaseClasses
                 new Brand("Oddmolly", 1, 2),
                 new Brand("Ronhill", 2, 3)
             };
-
-
         }
 
         public IEnumerable<Brand> GetBrands()
