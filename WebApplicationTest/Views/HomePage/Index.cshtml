@@ -1,8 +1,9 @@
-﻿@{
+﻿@model IEnumerable<WebApplicationTest.Entities.Product>
+@{
     Layout = "_Layout";
     ViewBag.Title = "Start Page";
 }
 
 @await Html.PartialAsync("PartialViews/_Slider")
 
-@await Html.PartialAsync("Partial/_Container")
+@await Html.PartialAsync("Partial/_Container", Model)

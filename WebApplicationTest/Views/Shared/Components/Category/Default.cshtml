@@ -19,7 +19,7 @@
                     <ul>
                         @foreach (var ChildrenCategory in ParentCategory.ChildrensCategories)
                         {
-                            <li><a href="#">@ChildrenCategory.Name</a></li>
+                            <li><a asp-controller="Catalog" asp-action="Products" asp-route-SectionId="@ParentCategory.Id">@ChildrenCategory.Name</a></li>
                         }
                     </ul>
                 </div>
