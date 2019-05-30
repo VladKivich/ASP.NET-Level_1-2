@@ -45,7 +45,7 @@ namespace WebApplicationTest.Controllers
             }
             return View(A);
         }
-
+        
         [HttpPost]
         public IActionResult Edit(Astronauts Astro)
         {

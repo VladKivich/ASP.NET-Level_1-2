@@ -89,12 +89,12 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a asp-controller="HomePage" asp-action="Index" class="active">HomePage</a></li>
+                            <li><a asp-controller="HomePage" asp-action="Index" class="active">Home Page</a></li>
                             <li class="dropdown">
                                 <a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
-                                    <li><a asp-controller="HomePage" asp-action="Shop">Products</a></li>
-                                    <li><a asp-controller="HomePage" asp-action="ProductDetails">Product Details</a></li>
+                                    <li><a asp-controller="Catalog" asp-action="Products">Products</a></li>
+                                    <li><a asp-controller="Catalog" asp-action="ProductDetails">Product Details</a></li>
                                     <li><a asp-controller="HomePage" asp-action="Checkout">Checkout</a></li>
                                     <li><a asp-controller="HomePage" asp-action="Cart">Cart</a></li>
                                     <li><a asp-controller="HomePage" asp-action="Login">Login</a></li>
@@ -109,6 +109,7 @@
                             </li>
                             <li><a asp-controller="HomePage" asp-action="Error404">404</a></li>
                             <li><a asp-controller="HomePage" asp-action="ContactUs">Contact</a></li>
+                            <li><a asp-controller="Astronaut" asp-action="AstronautsList">Astronaut List</a></li>
                         </ul>
                     </div>
                 </div>

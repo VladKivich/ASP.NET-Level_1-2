@@ -13,10 +13,6 @@ namespace WebApplicationTest.Controllers
             return View();
         }
         
-        public IActionResult Shop() => View();
-
-        public IActionResult ProductDetails() => View();
-
         public IActionResult Login() => View();
 
         public IActionResult ContactUs() => View();
@@ -30,5 +26,9 @@ namespace WebApplicationTest.Controllers
         public IActionResult Blog() => View();
 
         public IActionResult Error404() => View();
+
+        public IActionResult Products() => View();
+
+        public IActionResult ProductDetails() => View();
     }
 }

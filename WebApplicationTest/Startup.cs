@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using WebApplicationTest.Entities.BaseClasses;
+using WebApplicationTest.Entities.Interfaces;
 using WebApplicationTest.Interfaces;
 using WebApplicationTest.Services;
 
@@ -30,10 +27,10 @@ namespace WebApplicationTest
         {
             //Добавялем зависимости
             services.AddSingleton<IAstronautsCollection, AstronautsServices>();
+            services.AddSingleton<IProductData, InMemoryProductData>();
 
             //Добавляем MVC сервисы
             services.AddMvc();
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
