@@ -1,0 +1,17 @@
+﻿@{
+    Layout = "_Layout";
+    ViewBag.Title = "Start Page";
+}
+
+@await Html.PartialAsync("PartialViews/_Slider")
+
+<section id="Main">
+    <div class="container">
+        <h2>List of Astronauts</h2>
+        <h2>
+            <a asp-controller="Astronaut" asp-action="AstronautsList">Astronaut List</a>
+        </h2>
+    </div>
+</section>
+
+@await Html.PartialAsync("Partial/_Container")
