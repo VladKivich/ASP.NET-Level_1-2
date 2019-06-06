@@ -20,4 +20,9 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebStore.DB\WebStore.DB.csproj" />
+    <ProjectReference Include="..\WebStore.Domain\WebStore.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

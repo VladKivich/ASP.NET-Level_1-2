@@ -1,0 +1,18 @@
+﻿using Microsoft.EntityFrameworkCore;
+using WebStore.Domain.Entities;
+
+namespace WebStore.DB
+{
+    class WebStoreContext:DbContext
+    {
+        public WebStoreContext(DbContextOptions options) : base(options)
+        {
+
+        }
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Brand> Brands { get; set; }
+    }
+}
