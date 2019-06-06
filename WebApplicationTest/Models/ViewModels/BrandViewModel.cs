@@ -1,4 +1,4 @@
-﻿using WebApplicationTest.Entities.Interfaces;
+﻿using WebStore.Domain.Entities.Interfaces;
 
 namespace WebApplicationTest.Models.ViewModels
 {

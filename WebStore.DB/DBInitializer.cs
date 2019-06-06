@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Internal;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,7 @@ namespace WebStore.DB
 
             if (Context.Products.Any())
             {
-
+                return;
             }
 
             #region Data
@@ -49,23 +50,83 @@ namespace WebStore.DB
 
             var Products = new List<Product>()
             {
-                new Product(1, "Easy Polo Black Edition", 1000, "product12.jpg", 0, 1, 1, true),
-                new Product(1, "Easy Polo Black Edition", 2000, "product11.jpg", 0, 1, 1, true),
-                new Product(1, "Easy Polo Black Edition", 3000, "product10.jpg", 0, 1, 1, true),
-                new Product(1, "Easy Polo Black Edition", 4000, "product9.jpg", 0, 5, 1, true),
-                new Product(1, "Easy Polo Black Edition", 5000, "product8.jpg", 0, 5, 2, true),
+                new Product(1, "Easy Polo Black Edition", 1000, "/images/shop/product12.jpg", 0, 1, 1),
+                new Product(1, "Easy Polo Black Edition", 2000, "/images/shop/product11.jpg", 0, 1, 1),
+                new Product(1, "Easy Polo Black Edition", 3000, "/images/shop/product10.jpg", 0, 1, 1),
+                new Product(1, "Easy Polo Black Edition", 4000, "/images/shop/product9.jpg", 0, 5, 1),
+                new Product(1, "Easy Polo Black Edition", 5000, "/images/shop/product8.jpg", 0, 5, 2),
 
-                new Product(1, "Easy Polo Black Edition", 6000, "product7.jpg", 0, 5, 2, true),
-                new Product(1, "Easy Polo Black Edition", 7000, "product1.jpg", 0, 9, 2, false),
-                new Product(1, "Easy Polo Black Edition", 8000, "product2.jpg", 0, 9, 2, false),
-                new Product(1, "Easy Polo Black Edition", 9000, "product3.jpg", 0, 9, 3, false),
-                new Product(1, "Easy Polo Black Edition", 9500, "product4.jpg", 0, 13, 3, false),
+                new Product(1, "Easy Polo Black Edition", 6000, "/images/shop/product7.jpg", 0, 5, 2),
+                new Product(1, "Easy Polo Black Edition", 8000, "/images/home/product2.jpg", 0, 9, 2),
+                new Product(1, "Easy Polo Black Edition", 9000, "/images/home/product3.jpg", 0, 9, 3),
+                new Product(1, "Easy Polo Black Edition", 7000, "/images/home/product1.jpg", 0, 9, 2),
+                new Product(1, "Easy Polo Black Edition", 9500, "/images/home/product4.jpg", 0, 13, 3),
 
-                new Product(1, "Easy Polo Black Edition", 9600, "product5.jpg", 0, 13, 3, false),
-                new Product(1, "Easy Polo Black Edition", 9700, "product6.jpg", 0, 13, 3, false),
+                new Product(1, "Easy Polo Black Edition", 9600, "/images/home/product5.jpg", 0, 13, 3),
+                new Product(1, "Easy Polo Black Edition", 9700, "/images/home/product6.jpg", 0, 13, 3),
             };
 
             #endregion
+            
+            using (var Trans = Context.Database.BeginTransaction())
+            {
+                #region Brands
+
+                foreach (var Brand in Brands)
+                {
+                    Context.Brands.Add(Brand);
+                }
+
+                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Brands] ON");
+
+                Context.SaveChanges();
+
+                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Brands] OFF");
+
+                #endregion
+
+                Trans.Commit();
+            }
+
+            using (var Trans = Context.Database.BeginTransaction())
+            {
+                #region Products
+
+                foreach (var Product in Products)
+                {
+                    Context.Products.Add(Product);
+                }
+                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Products] ON");
+
+                Context.SaveChanges();
+
+                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Products] OFF");
+
+                #endregion
+
+                Trans.Commit();
+            }
+
+            using (var Trans = Context.Database.BeginTransaction())
+            {
+                #region Category
+
+                foreach (var Category in Categories)
+                {
+                    Context.Categories.Add(Category);
+                }
+
+                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Sections] ON");
+                
+                Context.SaveChanges();
+
+                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Sections] OFF");
+
+                #endregion
+
+                Trans.Commit();
+            }
+
         }
     }
 }

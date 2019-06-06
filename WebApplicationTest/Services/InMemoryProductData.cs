@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplicationTest.Entities.Interfaces;
+using WebApplicationTest.Interfaces;
 
 namespace WebApplicationTest.Entities.BaseClasses
 {
-    public class InMemoryProductData : IProductData
+    public class InMemoryProductData
     {
         private readonly List<Brand> Brands;
         private readonly List<Category> Categories;

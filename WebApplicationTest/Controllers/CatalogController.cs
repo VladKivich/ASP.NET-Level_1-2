@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using WebApplicationTest.Entities.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApplicationTest.Interfaces;
+using WebStore.Domain.Entities;
 
 namespace WebApplicationTest.Controllers
 {
@@ -18,7 +15,7 @@ namespace WebApplicationTest.Controllers
 
         public IActionResult Products(int? BrandId, int? SectionId)
         {
-            var AllProducts = Data.GetProducts(new Entities.ProductFilter(BrandId, SectionId));
+            var AllProducts = Data.GetProducts(new ProductFilter(BrandId, SectionId));
 
             return View(AllProducts);
         }

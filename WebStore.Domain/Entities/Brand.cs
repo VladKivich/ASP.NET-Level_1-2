@@ -11,5 +11,17 @@ namespace WebStore.Domain.Entities
         public int Order { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+
+        public Brand(string Name, int Order, int Id)
+        {
+            this.Name = Name;
+            this.Order = Order;
+            this.Id = Id;
+        }
+
+        public Brand()
+        {
+
+        }
     }
 }

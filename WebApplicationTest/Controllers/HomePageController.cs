@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using WebApplicationTest.Entities.Interfaces;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApplicationTest.Interfaces;
+using WebStore.Domain.Entities;
 
 namespace WebApplicationTest.Controllers
 {
@@ -18,7 +15,7 @@ namespace WebApplicationTest.Controllers
 
         public IActionResult Index()
         {
-            return View(Data.GetProducts(new Entities.ProductFilter(null, null)));
+            return View(Data.GetProducts(new ProductFilter(null, null)));
         }
         
         public IActionResult Login() => View();

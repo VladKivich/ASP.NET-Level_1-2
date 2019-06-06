@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplicationTest.Entities.BaseClasses;
-using WebApplicationTest.Entities.Interfaces;
 using WebApplicationTest.Interfaces;
 using WebApplicationTest.Services;
 using WebStore.DB;
@@ -29,7 +27,8 @@ namespace WebApplicationTest
         {
             //Добавялем зависимости
             services.AddSingleton<IAstronautsCollection, AstronautsServices>();
-            services.AddSingleton<IProductData, InMemoryProductData>();
+            //services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddScoped<IProductData, SQLProductData>();
             services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(
             Configuration.GetConnectionString("DefaultConnection")));
 

@@ -6,6 +6,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Entities\**" />
+    <Content Remove="Entities\**" />
+    <EmbeddedResource Remove="Entities\**" />
+    <None Remove="Entities\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Services\InMemoryProductData.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\_ViewStart.cshtml" />
   </ItemGroup>
 

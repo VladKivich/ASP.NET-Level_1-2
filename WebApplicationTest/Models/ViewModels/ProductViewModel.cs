@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplicationTest.Entities.Interfaces;
+using WebStore.Domain.Entities.Interfaces;
 
 namespace WebApplicationTest.Models.ViewModels
 {

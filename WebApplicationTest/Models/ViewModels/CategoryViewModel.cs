@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplicationTest.Entities.Interfaces;
+using WebStore.Domain.Entities.BaseClasses;
+using WebStore.Domain.Entities.Interfaces;
 
 namespace WebApplicationTest.Models.ViewModels
 {
-    public class CategoryViewModel : INamedEntity, IOrderedEntity
+    public class CategoryViewModel : NamedEntity, IOrderedEntity
     {
         public CategoryViewModel(string Name, int Id, int Order)
         {
@@ -16,8 +17,8 @@ namespace WebApplicationTest.Models.ViewModels
             this.Order = Order;
         }
 
-        public string Name { get; set; }
-        public int Id { get; set; }
+        //public string Name { get; set; }
+        //public int Id { get; set; }
         public int Order { get; set; }
 
         public List<CategoryViewModel> ChildrensCategories { get; set; }

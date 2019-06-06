@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebStore.Domain.Entities.Interfaces
 {
-    interface INamedEntity:IBaseEntity
+    public interface INamedEntity:IBaseEntity
     {
         string Name { get; set; }
     }

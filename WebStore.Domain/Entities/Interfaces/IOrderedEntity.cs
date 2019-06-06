@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebStore.Domain.Entities.Interfaces
 {
-    interface IOrderedEntity
+    public interface IOrderedEntity
     {
         int Order { get; set; }
     }

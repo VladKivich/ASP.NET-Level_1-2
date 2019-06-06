@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WebApplicationTest.Entities.BaseClasses;
+using WebStore.Domain.Entities;
 
-namespace WebApplicationTest.Entities.Interfaces
+namespace WebApplicationTest.Interfaces
 {
     public interface IProductData
     {

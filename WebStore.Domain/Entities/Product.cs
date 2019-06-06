@@ -22,6 +22,22 @@ namespace WebStore.Domain.Entities
         public string ImgUrl { get; set; }
 
         public decimal Price { get; set; }
-        
+
+        public Product(int Id, string Name, decimal Price, string ImgUrl, int Order, int SectionId, int BrandId)
+        {
+            this.Id = Id;
+            this.Name = Name;
+            this.Price = Price;
+            this.ImgUrl = ImgUrl;
+            this.Order = Order;
+            this.SectionId = SectionId;
+            this.BrandId = BrandId;
+        }
+
+        public Product()
+        {
+
+        }
+
     }
 }
