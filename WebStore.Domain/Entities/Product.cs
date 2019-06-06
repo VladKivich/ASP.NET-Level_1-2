@@ -22,5 +22,6 @@ namespace WebStore.Domain.Entities
         public string ImgUrl { get; set; }
 
         public decimal Price { get; set; }
+        
     }
 }
