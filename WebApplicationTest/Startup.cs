@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplicationTest.Entities.BaseClasses;
 using WebApplicationTest.Entities.Interfaces;
 using WebApplicationTest.Interfaces;
 using WebApplicationTest.Services;
+using WebStore.DB;
 
 namespace WebApplicationTest
 {
@@ -28,6 +30,8 @@ namespace WebApplicationTest
             //Добавялем зависимости
             services.AddSingleton<IAstronautsCollection, AstronautsServices>();
             services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(
+            Configuration.GetConnectionString("DefaultConnection")));
 
             //Добавляем MVC сервисы
             services.AddMvc();

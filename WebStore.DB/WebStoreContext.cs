@@ -3,7 +3,7 @@ using WebStore.Domain.Entities;
 
 namespace WebStore.DB
 {
-    class WebStoreContext:DbContext
+    public class WebStoreContext:DbContext
     {
         public WebStoreContext(DbContextOptions options) : base(options)
         {
