@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WebApplicationTest.Models.ViewModels.BrandViewModel>
+
+<div class="brands_products">
+    <!--brands_products-->
+    <h2>Brands</h2>
+    <div class="brands-name">
+        <ul class="nav nav-pills nav-stacked">
+            @foreach (var Brand in Model)
+            {
+                <li><a asp-controller="Catalog" asp-action="Products" asp-route-BrandId="@Brand.Id"> <span class="pull-right">(@Brand.Count)</span>@Brand.Name</a></li>
+            }
+        </ul>
+    </div>
+</div><!--/brands_products-->
+w

@@ -1,0 +1,60 @@
+﻿@using WebApplicationTest.Models
+@model WebApplicationTest.Models.Astronauts
+
+@{
+    Layout = "_Layout";
+    ViewBag.Title = "Astronauts Editor";
+}
+<div class="container">
+    <h2>Editor</h2>
+    <p>Astronaut Personal Card</p>
+    <div>
+        <form method="post" asp-controller="Astronaut" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input asp-for="ID" type="hidden"/>
+
+            <div class="form-group">
+                <label asp-for="Name" class="form-label">Имя</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GroupSet" class="form-label"></label>
+                <input asp-for="GroupSet" class="form-control" />
+                <span asp-validation-for="GroupSet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="form-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Post" class="form-label"></label>
+                <input asp-for="Post" class="form-control" />
+                <span asp-validation-for="Post" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="form-label"></label>
+                <select asp-for="Status" asp-items="@Html.GetEnumSelectList(typeof(Status))" class="form-control"></select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfFlights" class="form-label">Number Of Flights</label>
+                <input asp-for="NumberOfFlights" class="form-control" />
+                <span asp-validation-for="NumberOfFlights" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="form-label"></label>
+                <select asp-for="Gender" asp-items="@Html.GetEnumSelectList(typeof(Gender))" class="form-control"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+    <div>
+        <p><a asp-controller="Astronaut" asp-action="AstronautsList">Back to Astronauts List</a></p>
+    </div>
+</div>
+        

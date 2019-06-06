@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebApplicationTest.Models.ViewModels.CategoryViewModel>
+
+
+<div class="panel-group category-products" id="accordian">
+    <!--category-productsr-->
+    @foreach (var ParentCategory in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordian" href="#@ParentCategory.Name.ToLower().Replace(" ", "")">
+                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                        @ParentCategory.Name
+                    </a>
+                </h4>
+            </div>
+            <div id="@ParentCategory.Name.ToLower().Replace(" ", "")" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <ul>
+                        @foreach (var ChildrenCategory in ParentCategory.ChildrensCategories)
+                        {
+                            <li><a asp-controller="Catalog" asp-action="Products" asp-route-SectionId="@ParentCategory.Id">@ChildrenCategory.Name</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+</div><!--/category-products-->
