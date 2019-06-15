@@ -10,7 +10,7 @@ using WebStore.DB;
 namespace WebStore.DB.Migrations
 {
     [DbContext(typeof(WebStoreContext))]
-    [Migration("20190606120856_Initial")]
+    [Migration("20190615101438_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace WebStore.DB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brand");
                 });
 
             modelBuilder.Entity("WebStore.Domain.Entities.Category", b =>

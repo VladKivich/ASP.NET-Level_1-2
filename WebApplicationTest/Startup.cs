@@ -27,7 +27,6 @@ namespace WebApplicationTest
         {
             //Добавялем зависимости
             services.AddSingleton<IAstronautsCollection, AstronautsServices>();
-            //services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddScoped<IProductData, SQLProductData>();
             services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(
             Configuration.GetConnectionString("DefaultConnection")));
@@ -45,8 +44,6 @@ namespace WebApplicationTest
             }
 
             app.UseStaticFiles();
-
-            var Greeting = Configuration["CustomGreeting"];
 
             app.UseMvc(routes =>
             {

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebApplicationTest.Services;
 using WebStore.DB;
 
 namespace WebApplicationTest
@@ -18,16 +19,16 @@ namespace WebApplicationTest
         {
             var Host = CreateWebHostBuilder(args);
 
-            using(var scope = Host.Services.CreateScope())
+            using (var scope = Host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-                
+
                 try
                 {
                     WebStoreContext Context = services.GetRequiredService<WebStoreContext>();
+                    //WebStoreContext Context = new DesignTimeDbContextFactory().CreateDbContext(new string[10]);
                     DBInitializer.Initialize(Context);
                 }
-
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();

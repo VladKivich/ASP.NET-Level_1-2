@@ -31,7 +31,7 @@ namespace WebStore.DB.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brand");
                 });
 
             modelBuilder.Entity("WebStore.Domain.Entities.Category", b =>

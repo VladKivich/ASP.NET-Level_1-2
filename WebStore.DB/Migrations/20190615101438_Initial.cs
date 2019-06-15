@@ -8,7 +8,7 @@ namespace WebStore.DB.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Brands",
+                name: "Brand",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -18,7 +18,7 @@ namespace WebStore.DB.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Brands", x => x.Id);
+                    table.PrimaryKey("PK_Brand", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -59,9 +59,9 @@ namespace WebStore.DB.Migrations
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Brands_BrandId",
+                        name: "FK_Products_Brand_BrandId",
                         column: x => x.BrandId,
-                        principalTable: "Brands",
+                        principalTable: "Brand",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -94,7 +94,7 @@ namespace WebStore.DB.Migrations
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Brands");
+                name: "Brand");
 
             migrationBuilder.DropTable(
                 name: "Categories");

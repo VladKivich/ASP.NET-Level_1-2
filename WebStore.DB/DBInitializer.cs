@@ -77,11 +77,11 @@ namespace WebStore.DB
                     Context.Brands.Add(Brand);
                 }
 
-                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Brands] ON");
+                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Brand] ON");
 
                 Context.SaveChanges();
 
-                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Brands] OFF");
+                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Brand] OFF");
 
                 #endregion
 
@@ -100,7 +100,7 @@ namespace WebStore.DB
 
                 Context.SaveChanges();
 
-                Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Products] OFF");
+               Context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Products] OFF");
 
                 #endregion
 
@@ -126,7 +126,6 @@ namespace WebStore.DB
 
                 Trans.Commit();
             }
-
         }
     }
 }
